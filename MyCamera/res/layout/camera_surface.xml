@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent" 
+android:layout_height="fill_parent" 
+android:orientation="horizontal">
+<SurfaceView android:id="@+id/surface_camera" 
+android:layout_width="fill_parent" 
+android:layout_height="fill_parent" 
+android:layout_weight="1">  
+</SurfaceView>
+<TextView 
+android:id="@+id/nowLocality"
+android:layout_x="10px"
+android:layout_y="25px"
+android:textColor="@color/red"
+android:textSize="14px"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="正在获取当前位置"
+/>
+<Button android:text="拍照"
+android:layout_x="360px"
+android:layout_y="20px"
+android:drawableLeft="@drawable/ic_menu_camera"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="@+id/paizhao"
+/>
+<Button android:text="上传"
+android:drawableLeft="@drawable/ic_menu_upload_mini"
+android:textSize="16px"
+android:layout_x="360px"
+android:layout_y="70px"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="@+id/uploadPhoto"
+/> 
+<Button android:text="退出"
+android:textSize="16px"
+android:drawableLeft="@drawable/ic_menu_revert_mini"
+android:layout_x="360px"
+android:layout_y="120px"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="@+id/exitPro" />
+</AbsoluteLayout>

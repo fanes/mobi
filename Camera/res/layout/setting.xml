@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout 
+        android:id="@+id/title_top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bg" >
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="连接设置"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"/>
+        
+        <ImageButton 
+            android:onClick="onClick"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/title_back"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"/>
+   
+    </RelativeLayout>
+    
+    <TextView 
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请输入要连接的pc的ip地址："
+        android:textSize="20sp" 
+        android:layout_centerHorizontal="true"/>
+    
+    <EditText 
+        android:id="@+id/ed_ip"
+        android:layout_marginTop="140dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+    
+    <Button 
+        android:id="@+id/btn_conn"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_below="@id/ed_ip"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:background="@drawable/btn_conn"
+        android:text="连    接"/>
+    
+
+</RelativeLayout>

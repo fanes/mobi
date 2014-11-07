@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name></display-name>
+  <servlet>
+    <servlet-name>UpdateNews</servlet-name>
+    <servlet-class>edu.hrbeu.newsserver.servlet.UpdateNews</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserReg</servlet-name>
+    <servlet-class>edu.hrbeu.newsserver.servlet.UserReg</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>FavNews</servlet-name>
+    <servlet-class>edu.hrbeu.newsserver.servlet.FavNews</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserLogin</servlet-name>
+    <servlet-class>edu.hrbeu.newsserver.servlet.UserLogin</servlet-class>
+  </servlet>
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>UpdateNews</servlet-name>
+    <url-pattern>/UpdateNews</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserReg</servlet-name>
+    <url-pattern>/UserReg</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FavNews</servlet-name>
+    <url-pattern>/FavNews</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserLogin</servlet-name>
+    <url-pattern>/UserLogin</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

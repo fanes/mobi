@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+<LinearLayout 
+android:orientation="horizontal"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+>
+<TableLayout android:layout_width="fill_parent"
+android:layout_height="wrap_content" 
+android:stretchColumns="*"
+>
+<TableRow>
+    <Spinner 
+    android:id="@+id/stationId"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+   />
+   </TableRow>
+   <TableRow>
+    <EditText 
+android:id="@+id/photoInfo" 
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:lines="3"
+android:singleLine="true"
+android:text="图片信息"
+/>
+   </TableRow>
+   <TableRow>
+    <ImageView 
+    android:id="@+id/subPicImgView"
+android:adjustViewBounds="true"
+android:layout_width="wrap_content"
+android:layout_height="300px"
+/>
+   </TableRow>
+   <TableRow>
+<TableLayout android:layout_width="fill_parent"
+android:layout_height="wrap_content" 
+android:stretchColumns="*"
+>
+   <TableRow>
+    <Button 
+android:id="@+id/subButton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:drawableLeft="@drawable/ic_menu_upload_mini"
+android:text="上传"
+/>
+<Button 
+android:id="@+id/returnMain"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:drawableLeft="@drawable/ic_menu_revert_mini"
+android:text="返回"
+/>
+   </TableRow>
+</TableLayout>
+</TableRow>
+</TableLayout>
+</LinearLayout>
+</ScrollView>

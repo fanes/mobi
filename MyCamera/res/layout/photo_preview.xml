@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <TableLayout android:layout_width="fill_parent"
+android:layout_height="fill_parent" 
+android:stretchColumns="*"
+android:background="@color/white"
+>
+<TableRow >
+<ImageView 
+android:id="@+id/previewPic"
+    android:layout_width="wrap_content"
+    android:layout_height="235px"
+   />
+   <!-- 
+    android:src="@drawable/javamylife"
+    -->
+</TableRow>
+   <TableRow>
+    <TableLayout android:layout_width="fill_parent"
+android:layout_height="wrap_content" 
+android:stretchColumns="*"
+android:background="@color/white"
+>
+<TableRow>
+<Button 
+    android:id="@+id/returnShoot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:drawableLeft="@drawable/ic_menu_revert_mini"
+    android:gravity="center"
+    android:text="放弃"
+   />
+   <Button 
+    android:id="@+id/savePicture"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:drawableLeft="@drawable/ic_menu_save"
+    android:gravity="center"
+    android:text="保存"
+   />
+</TableRow>
+</TableLayout>
+   </TableRow>
+</TableLayout>
+</LinearLayout>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;proguard-project.txt&apos; to &apos;dianping&apos;&#x0D;&#x0A;- Original project: &apos;Camera&apos;&#x0D;&#x0A;- Destination element: &apos;dianping&apos;&#x0D;&#x0A;- Original element: &apos;proguard-project.txt&apos;" description="Copy file" destination="=dianping" element1="proguard-project.txt" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1414554553280" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,5 @@
+package com.frank.zxing;
+
+public class BufferedImageLuminanceSource {
+
+}

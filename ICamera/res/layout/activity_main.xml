@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello" />
+
+    <ImageView
+        android:id="@+id/imageID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="50dip"
+        android:maxWidth="50dip" />
+
+    <Button
+        android:id="@+id/btn_list"
+        android:layout_width="150dip"
+        android:layout_height="50dip"
+        android:onClick="onClickList"
+        android:text="相册" />
+
+    <Button
+        android:id="@+id/btn_take"
+        android:layout_width="150dip"
+        android:layout_height="50dip"
+        android:onClick="onClickTake"
+        android:text="拍照" />
+
+</LinearLayout>

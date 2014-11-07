@@ -1,0 +1,126 @@
+package com.df.dianping;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.hardware.Camera;
+import android.os.Bundle;
+import android.view.SurfaceView;
+import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.PlanarYUVLuminanceSource;
+import com.google.zxing.Result;
+import com.google.zxing.common.HybridBinarizer;
+
+public class MyActivity extends Activity {  
+    /** Called when the activity is first created. */  
+    private SurfaceView sfvCamera;   //背景视图
+    private SFHCamera sfhCamera;  //自动对焦类
+    private ImageView imgView;  
+    private View centerView;  
+    private TextView txtScanResult;  
+    private Timer mTimer;  
+    private MyTimerTask mTimerTask;  //防手抖取时间段内的屏幕内容
+    // 按照标准HVGA  
+    final static int width = 480;  
+    final static int height = 320;  
+    int dstLeft, dstTop, dstWidth, dstHeight;  
+    @Override  
+    public void onCreate(Bundle savedInstanceState) {  
+        super.onCreate(savedInstanceState);  
+        setContentView(R.layout.mytest);
+        this.setTitle("Android条码");  
+        imgView = (ImageView) this.findViewById(R.id.ImageView01);  
+        centerView = (View) this.findViewById(R.id.centerView);  
+        sfvCamera = (SurfaceView) this.findViewById(R.id.sfvCamera);  
+        //以上都是布局
+        sfhCamera = new SFHCamera(sfvCamera.getHolder(), width, height,  
+                previewCallback);  //自动对焦过程
+        txtScanResult=(TextView)this.findViewById(R.id.txtScanResult);  //获取的string显示在一个给定的text里，这里可以更改你想要的样式
+        // 初始化定时器  
+        mTimer = new Timer();  
+        mTimerTask = new MyTimerTask();  
+        mTimer.schedule(mTimerTask, 0, 80);  
+    }  
+      
+    class MyTimerTask extends TimerTask {  
+        @Override  
+        public void run() {  
+            if (dstLeft == 0) {//只赋值一次  
+                //取屏函数只能在activity里用
+                dstLeft = centerView.getLeft() * width  
+                        / getWindowManager().getDefaultDisplay().getWidth();  
+                dstTop = centerView.getTop() * height  
+                        / getWindowManager().getDefaultDisplay().getHeight();  
+                dstWidth = (centerView.getRight() - centerView.getLeft())* width  
+                        / getWindowManager().getDefaultDisplay().getWidth();  
+                dstHeight = (centerView.getBottom() - centerView.getTop())* height  
+                        / getWindowManager().getDefaultDisplay().getHeight();  
+            }  
+            sfhCamera.AutoFocusAndPreviewCallback();  
+        }  
+    }  
+    /** 
+     *  自动对焦后输出图片 
+     */  
+    private Camera.PreviewCallback previewCallback = new Camera.PreviewCallback() {  
+        @Override  
+        public void onPreviewFrame(byte[] data, Camera arg1) {  
+            //取得指定范围的帧的数据  
+            PlanarYUVLuminanceSource source = new PlanarYUVLuminanceSource(  
+                    data, width, height, dstLeft, dstTop, dstWidth, dstHeight);  
+            //取得灰度图  
+            Bitmap mBitmap = source.renderCroppedGreyscaleBitmap();  
+            //显示灰度图  
+            imgView.setImageBitmap(mBitmap);  
+            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));  
+            MultiFormatReader reader = new MultiFormatReader();  
+            try {  
+                WebView wv = null;            //安卓无地址栏的游览器
+                ProgressDialog pd;          //进度条
+                Result result = reader.decode(bitmap);  //对获取的图片进行解码
+                String strResult = "BarcodeFormat:"  
+                        + result.getBarcodeFormat().toString() + "  text:"  
+                        + result.getText();  
+                txtScanResult.setText(strResult);  
+                
+                //开始做跳转
+             //   loadurl(wv,result.getText());
+                wv=(WebView)findViewById(R.id.wv);
+                wv.setVisibility(0); //0为可见
+                wv.getSettings().setJavaScriptEnabled(true);//可用JS
+                wv.setScrollBarStyle(0);//滚动条风格，为0就是不给滚动条留空间，滚动条覆盖在网页上
+                wv.setWebViewClient(new WebViewClient(){   
+                    public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
+                        loadurl(view,url);//载入网页
+                        return true;   
+                    }//重写点击动作,用webview载入
+         
+                });
+                pd=new ProgressDialog(MyActivity.this);
+                pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                pd.setMessage("数据载入中，请稍候！");
+                
+            } catch (Exception e) {  
+                txtScanResult.setText("Scanning");  
+            }  
+        }  
+    };  
+    public void loadurl(final WebView view,final String url){
+        new Thread(){
+            public void run(){
+                //handler.sendEmptyMessage(0);
+                view.loadUrl(url);//载入网页
+            }
+        }.start();
+    }
+} 

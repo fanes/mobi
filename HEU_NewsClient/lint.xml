@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="HandlerLeak">
+        <ignore path="src/cn/edu/hrbeu/heu_newsclient/International.java" />
+        <ignore path="src/cn/edu/hrbeu/heu_newsclient/National.java" />
+        <ignore path="src/cn/edu/hrbeu/heu_newsclient/NewsTop.java" />
+        <ignore path="src/cn/edu/hrbeu/heu_newsclient/Society.java" />
+    </issue>
+</lint>

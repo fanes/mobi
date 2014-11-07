@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="HEU_NewsServer"
+  id="myeclipse.1397884508065"
+  context-root="/HEU_NewsServer"
+  j2ee-spec="6.0"
+  archive="HEU_NewsServer.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
